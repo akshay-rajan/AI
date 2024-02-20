@@ -20,7 +20,3 @@ A node is a data structure that keeps track of
 - a parent (the node that generated this node)
 - an action (action applied to parent to get node)
 - a path cost (from initial state to node)
-
-
-
-
