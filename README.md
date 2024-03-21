@@ -46,10 +46,10 @@ A node is a data structure that keeps track of
 
 ### BFS vs DFS
 
+Here is a detailed differentiation between Breadth-First Search (BFS) and Depth-First Search (DFS) presented in a tabulated format:
 
 | Criteria            | Breadth-First Search (BFS)                                 | Depth-First Search (DFS)                                     |
 |---------------------|------------------------------------------------------------|--------------------------------------------------------------|
-| Definition          | Expands nodes level by level from the start node outward.  | Expands nodes depth-wise, exploring as far as possible along each branch before backtracking.|
 | Order of Expansion  | Expands nodes level by level from the start node outward.  | Expands nodes depth-wise, exploring as far as possible along each branch before backtracking.|
 | Data Structure      | Uses a queue data structure to store nodes for expansion.  | Uses a stack data structure (or recursion) for node traversal.|
 | Memory Usage        | Typically uses more memory due to storing all nodes at each level. | Generally uses less memory because it only stores a path from the start node to the current node. |
@@ -58,3 +58,4 @@ A node is a data structure that keeps track of
 | Implementation      | Implemented iteratively using a queue for node expansion.   | Implemented recursively (or using a stack) for node traversal. |
 | Use Cases           | Well-suited for finding shortest paths, puzzle solving, and exploring neighbor nodes uniformly. | Suitable for topological sorting, maze solving, and searching large trees or graphs. |
 
+These differences highlight the contrasting strategies employed by BFS and DFS, making each algorithm more suitable for specific problem-solving scenarios based on factors such as memory usage, search space structure, and the desired outcome (e.g., shortest path vs. deep exploration).
