@@ -33,7 +33,7 @@ In order to define a problem in the context of artificial intelligence, specify 
 
 ### Production Rules
 
-Production rules consists of
+Production Rules consists of
 
 1. **A Set of Rules**: A collection of condition-action pairs that dictate the behavior of the system.
 2. **Knowledge Databases**: A structured repository of facts and information that the system uses to make decisions.
@@ -50,7 +50,13 @@ A node is a data structure that keeps track of
 
 ### Production System Characteristics
 
+Production Systems are structures that organize an AI program, facilitating describing and performing the search process.
+
 1. **Monotonic** and **Non-monotonic**: In monotonic production system, applicaton of a rule never prevents the application of another rule that could have been applied the time the first rule was selected. Otherwise the system is said to be non-monotonic.
+
+2. **Partially Commutative**: A system is said to be partially commutative if, application of a particular set of rules transform a state `x` to a state `y`, then any allowable permutation of those rules also transform `x` to `y`.
+
+3. **Commutative**: A production system that is monotonic and partially commutative are called Commutative.
 
 ## Search Strategies
 
