@@ -80,28 +80,20 @@ A node is a data structure that keeps track of
             If solution is found, return success
             Else, increment the SEARCH-DEPTH
         If no solution is found, return failure
-    
    ```
 
 4. **Best First Search (BFS)**:
    ```
-   BFS(start_node, goal_node):
-       Initialize an empty priority queue.
-       Enqueue start_node into the priority queue with priority based on heuristic value.
-       Mark start_node as visited.
-       
-       while priority queue is not empty:
-           Dequeue a node from the priority queue.
-           Process the node.
-           
-           if node == goal_node:
-               return "Goal found"
-               
-           for each neighbor of the dequeued node:
-               if neighbor is not visited:
-                   Mark neighbor as visited.
-                   Enqueue neighbor into the priority queue with priority based on heuristic value.
-       return "Goal not found"
+    BFS(initial_state):
+        Initialize an empty priority queue OPEN.
+        Enqueue initial_state to priority queue with priority based on heuristic value.
+        Until goal is found or OPEN is empty, do:
+            Pick the best node in OPEN
+            Generate its successors
+            For each successor, do:
+                Evaluate the node if it is not already been evaluated
+                Enqueue the successor to OPEN
+        If no solution is found, return failure.
    ```
 
 5. **Hill Climbing**:
