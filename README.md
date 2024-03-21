@@ -48,30 +48,27 @@ A node is a data structure that keeps track of
 
 1. **Breadth-First Search (BFS)**:
    ```
-   BFS(start_node):
-       Initialize an empty queue.
-       Enqueue the start node into the queue.
-       Mark the start node as visited.
-       
-       while queue is not empty:
-           Dequeue a node from the queue.
-           Process the node.
-           
-           for each neighbor of the dequeued node:
-               if neighbor is not visited:
-                   Mark neighbor as visited.
-                   Enqueue neighbor into the queue.
+    BFS(initial_state)
+        If the initial state is the goal, return success
+        Create NODE-LIST and enqueue the initial state into NODE-LIST
+        
+        While queue is not empty:
+            Dequeue the first element 'E' from NODE-LIST.
+            If NODE-LIST is empty, return failure
+            For each way a rule can match the state described in E:
+                Apply the rule to generate a state
+                If it is the goal state, return this state
+                Else, enqueue the new state to the NODE-LIST
    ```
 
 2. **Depth-First Search (DFS)**:
    ```
-   DFS(current_node):
-       Mark current_node as visited.
-       Process current_node.
-       
-       for each neighbor of current_node:
-           if neighbor is not visited:
-               DFS(neighbor)
+    DFS(initial_state):
+        If the inital state is goal, return success
+        Repeat until success or failure is returned:
+            Generate a successor E of the inital state
+            Call DFS with E as the initial state
+            If success is retured, signal success. Else, continue in this loop.
    ```
 
 3. **Iterative Deepening Search (IDS)**:
