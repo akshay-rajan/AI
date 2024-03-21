@@ -143,7 +143,7 @@ A node is a data structure that keeps track of
            current_state = best_neighbor
    ```
 
-7. **A* Search**:
+7. **A\* Search**:
    ```
    AStar(start_node, goal_node):
        Initialize an empty priority queue.
