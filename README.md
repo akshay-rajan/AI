@@ -33,7 +33,7 @@ In order to define a problem in the context of artificial intelligence, specify 
 
 ### Production Rules
 
-Production Rules consists of
+Production Rules are a type of knowledge representation used to make decisions. Production rules consists of
 
 1. **A Set of Rules**: A collection of condition-action pairs that dictate the behavior of the system.
 2. **Knowledge Databases**: A structured repository of facts and information that the system uses to make decisions.
