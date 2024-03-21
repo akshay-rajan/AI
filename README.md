@@ -46,8 +46,6 @@ A node is a data structure that keeps track of
 
 ### BFS vs DFS
 
-Here is a detailed differentiation between Breadth-First Search (BFS) and Depth-First Search (DFS) presented in a tabulated format:
-
 | Criteria            | Breadth-First Search (BFS)                                 | Depth-First Search (DFS)                                     |
 |---------------------|------------------------------------------------------------|--------------------------------------------------------------|
 | Order of Expansion  | Expands nodes level by level from the start node outward.  | Expands nodes depth-wise, exploring as far as possible along each branch before backtracking.|
@@ -58,4 +56,17 @@ Here is a detailed differentiation between Breadth-First Search (BFS) and Depth-
 | Implementation      | Implemented iteratively using a queue for node expansion.   | Implemented recursively (or using a stack) for node traversal. |
 | Use Cases           | Well-suited for finding shortest paths, puzzle solving, and exploring neighbor nodes uniformly. | Suitable for topological sorting, maze solving, and searching large trees or graphs. |
 
-These differences highlight the contrasting strategies employed by BFS and DFS, making each algorithm more suitable for specific problem-solving scenarios based on factors such as memory usage, search space structure, and the desired outcome (e.g., shortest path vs. deep exploration).
+
+### Hill Climbing vs Steepest Ascent Hill Climbing
+
+| Criteria                     | Hill Climbing                                               | Steepest Ascent Hill Climbing                                |
+|------------------------------|-------------------------------------------------------------|--------------------------------------------------------------|
+| Search Strategy              | Local search algorithm that iteratively improves the current solution by moving to a neighboring state. | Local search algorithm that always selects the best among all neighboring states for improvement. |
+| Heuristic Evaluation         | Uses a heuristic function to evaluate neighboring states and chooses one that improves the current solution. | Utilizes the same heuristic function but always selects the state that yields the highest improvement. |
+| Decision Making              | Selects a neighboring state that improves the current solution, even if it does not yield the best possible improvement. | Always chooses the state that provides the steepest ascent, ensuring the best possible improvement at each step. |
+| Memory Usage                 | Typically requires less memory as it only needs to store the current state and its neighbors. | Requires slightly more memory due to the need to evaluate all neighboring states for the steepest ascent. |
+| Completeness                 | Not guaranteed to find the global optimum; may get stuck in local optima. | Not guaranteed to find the global optimum; may get stuck in local optima. |
+| Convergence                  | Can converge quickly to a local optimum but may not be the global optimum. | Tends to converge more slowly than basic hill climbing but may reach a better local optimum. |
+| Backtracking                 | Does not perform backtracking; may get stuck in local optima.   | Does not perform backtracking; may get stuck in local optima. |
+| Use Cases                    | Suitable for optimization problems where finding a good solution quickly is more important than guaranteeing the best solution. | Useful when the goal is to reach a better local optimum than basic hill climbing, even if it takes more iterations. |
+
