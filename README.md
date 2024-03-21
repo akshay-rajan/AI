@@ -44,6 +44,144 @@ A node is a data structure that keeps track of
 - an action (action applied to parent to get node)
 - a path cost (from initial state to node)
 
+## Search Strategies
+
+1. **Breadth-First Search (BFS)**:
+   ```
+   BFS(start_node):
+       Initialize an empty queue.
+       Enqueue the start node into the queue.
+       Mark the start node as visited.
+       
+       while queue is not empty:
+           Dequeue a node from the queue.
+           Process the node.
+           
+           for each neighbor of the dequeued node:
+               if neighbor is not visited:
+                   Mark neighbor as visited.
+                   Enqueue neighbor into the queue.
+   ```
+
+2. **Depth-First Search (DFS)**:
+   ```
+   DFS(current_node):
+       Mark current_node as visited.
+       Process current_node.
+       
+       for each neighbor of current_node:
+           if neighbor is not visited:
+               DFS(neighbor)
+   ```
+
+3. **Iterative Deepening Search (IDS)**:
+   ```
+   IDS(start_node, depth_limit):
+       for depth from 0 to depth_limit:
+           result = DFS_limit(start_node, depth)
+           if result is not null:
+               return result
+       return "Solution not found within depth limit"
+   
+   DFS_limit(current_node, depth):
+       if depth == 0 and current_node is goal:
+           return current_node
+       if depth > 0:
+           for each neighbor of current_node:
+               result = DFS_limit(neighbor, depth - 1)
+               if result is not null:
+                   return result
+       return null
+   ```
+
+4. **Best First Search (BFS)**:
+   ```
+   BFS(start_node, goal_node):
+       Initialize an empty priority queue.
+       Enqueue start_node into the priority queue with priority based on heuristic value.
+       Mark start_node as visited.
+       
+       while priority queue is not empty:
+           Dequeue a node from the priority queue.
+           Process the node.
+           
+           if node == goal_node:
+               return "Goal found"
+               
+           for each neighbor of the dequeued node:
+               if neighbor is not visited:
+                   Mark neighbor as visited.
+                   Enqueue neighbor into the priority queue with priority based on heuristic value.
+       return "Goal not found"
+   ```
+
+5. **Hill Climbing**:
+   ```
+   HillClimbing(start_state):
+       current_state = start_state
+       
+       while true:
+           neighbors = generate_neighbors(current_state)
+           best_neighbor = select_best_neighbor(neighbors)
+           
+           if evaluation(best_neighbor) <= evaluation(current_state):
+               return current_state
+           current_state = best_neighbor
+   ```
+
+6. **Steepest Ascent Hill Climbing**:
+   ```
+   SteepestAscentHillClimbing(start_state):
+       current_state = start_state
+       
+       while true:
+           neighbors = generate_neighbors(current_state)
+           best_neighbor = select_best_neighbor(neighbors)
+           
+           if evaluation(best_neighbor) <= evaluation(current_state):
+               return current_state
+           current_state = best_neighbor
+   ```
+
+7. **A* Search**:
+   ```
+   AStar(start_node, goal_node):
+       Initialize an empty priority queue.
+       Enqueue start_node into the priority queue with priority f(start_node) = g(start_node) + h(start_node).
+       Mark start_node as visited and set its g-value to 0.
+       
+       while priority queue is not empty:
+           Dequeue a node from the priority queue.
+           Process the node.
+           
+           if node == goal_node:
+               return "Goal found"
+               
+           for each neighbor of the dequeued node:
+               if neighbor is not visited or g-value is lower:
+                   Mark neighbor as visited.
+                   Update neighbor's g-value to g(neighbor) = g(node) + cost(node, neighbor).
+                   Enqueue neighbor into the priority queue with priority f(neighbor) = g(neighbor) + h(neighbor).
+       return "Goal not found"
+   ```
+
+8. **Simulated Annealing**:
+   ```
+   SimulatedAnnealing(start_state, temperature, cooling_rate):
+       current_state = start_state
+       
+       while temperature > 0:
+           new_state = generate_random_neighbor(current_state)
+           energy_diff = evaluation(new_state) - evaluation(current_state)
+           
+           if energy_diff < 0 or random(0, 1) < exp(-energy_diff / temperature):
+               current_state = new_state
+           
+           temperature *= cooling_rate
+       
+       return current_state
+   ```
+
 ### BFS vs DFS
 
 | Criteria            | Breadth-First Search (BFS)                                 | Depth-First Search (DFS)                                     |
