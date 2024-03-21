@@ -73,22 +73,14 @@ A node is a data structure that keeps track of
 
 3. **Iterative Deepening Search (IDS)**:
    ```
-   IDS(start_node, depth_limit):
-       for depth from 0 to depth_limit:
-           result = DFS_limit(start_node, depth)
-           if result is not null:
-               return result
-       return "Solution not found within depth limit"
-   
-   DFS_limit(current_node, depth):
-       if depth == 0 and current_node is goal:
-           return current_node
-       if depth > 0:
-           for each neighbor of current_node:
-               result = DFS_limit(neighbor, depth - 1)
-               if result is not null:
-                   return result
-       return null
+    IDS(start_node, depth_limit):
+        Set SEARCH-DEPTH to 0
+        While SEARCH-DEPTH < depth_limit:
+            Conduct DFS upto SEARCH-DEPTH
+            If solution is found, return success
+            Else, increment the SEARCH-DEPTH
+        If no solution is found, return failure
+    
    ```
 
 4. **Best First Search (BFS)**:
