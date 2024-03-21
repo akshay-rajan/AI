@@ -111,16 +111,18 @@ A node is a data structure that keeps track of
 
 6. **Steepest Ascent Hill Climbing**:
    ```
-   SteepestAscentHillClimbing(start_state):
-       current_state = start_state
-       
-       while true:
-           neighbors = generate_neighbors(current_state)
-           best_neighbor = select_best_neighbor(neighbors)
-           
-           if evaluation(best_neighbor) <= evaluation(current_state):
-               return current_state
-           current_state = best_neighbor
+    SteepestAscentHillClimbing(initial_state):
+        Evaluate the inital_state. If it is the goal state, return success.
+        Else continue with the initial_state as current_state
+        Loop until a solution is found or a complete iteration produces no new changes to the state:
+            For each rule that matches the current_state:
+                Let SUCC be a state such that all successors of the current_state is better than SUCC
+                Apply the rule and generate a new_state
+                Evaluate new_state
+                    If new_state is the goal, return success
+                    Else, if new_state is better than SUCC, set SUCC as new_state
+                If SUCC is better than current_state, set current_state to SUCC
+
    ```
 
 7. **A\* Search**:
