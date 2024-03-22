@@ -31,22 +31,15 @@ In order to define a problem in the context of artificial intelligence, specify 
 5. Goal State: The desired state that the problem should reach
 6. Path Cost: A numeric cost assigned to each path
 
-### Production Rules
+### Production Systems
 
 Production Rules are a type of knowledge representation used to make decisions. Production rules consists of
 
-1. **A Set of Rules**: A collection of condition-action pairs that dictate the behavior of the system.
+1. **A Set of Rules (Production Rules)**: A collection of condition-action pairs that dictate the behavior of the system.
 2. **Knowledge Databases**: A structured repository of facts and information that the system uses to make decisions.
 3. **Control Strategies**: The methods used to determine the order in which rules are to be applied, and a conflict resolution strategy.
 4. **Rule Applier** (Interpreter): The mechanism that applies the rules to the knowledge database based on the control strategies.
 
-### Node
-
-A node is a data structure that keeps track of
-- a state
-- a parent (the node that generated this node)
-- an action (action applied to parent to get node)
-- a path cost (from initial state to node)
 
 ### Production System Characteristics
 
@@ -57,6 +50,14 @@ Production Systems are structures that organize an AI program, facilitating desc
 2. **Partially Commutative**: A system is said to be partially commutative if, application of a particular set of rules transform a state `x` to a state `y`, then any allowable permutation of those rules also transform `x` to `y`.
 
 3. **Commutative**: A production system that is monotonic and partially commutative are called Commutative.
+
+### Node
+
+A node is a data structure that keeps track of
+- a state
+- a parent (the node that generated this node)
+- an action (action applied to parent to get node)
+- a path cost (from initial state to node)
 
 ## Search Strategies
 
