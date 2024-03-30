@@ -1,52 +1,55 @@
-def isValid(char, digit, ans):
-    # For each character-digit pair
-    for c, d in ans.items():
-        # If the character is already assigned to a digit
-        if digit != 0 and char == c:
-            return False
-        # If the digit is already assigned to a character
-        if digit == 0 and d != 0 and d == char:
-            return False
-    return True
+import time
 
-def solve(integer, position):
-    """Solve the crypt-arithmetic problem"""
-    
-    # If all characters are assigned valid digits
-    if integer == 0: return True
-    
-    # If we reached the end of the list without finding a valid assignment
-    if position == char_count: return False
+def solve(problem, assignment={}):
+    """
+    Solve the cryptarithmetic puzzle and return the solution if it exists.
+    Arguments are a list of strings and the current assignment as a dictionary 
+    """
+    # If all characters are assigned, check if the problem is solved
+    if len(assignment) == len(problem):
+        # Find the numerical value of each string
+        s1 = sum([10**i * assignment[c] for i, c in enumerate(str1[::-1])])
+        s2 = sum([10**i * assignment[c] for i, c in enumerate(str2[::-1])])
+        s3 = sum([10**i * assignment[c] for i, c in enumerate(str3[::-1])])
+        # Verify the sum and return the assignment if it is correct
+        if s1 + s2 == s3:
+            return assignment
 
-    # Get the character based on the position
-    c = chars[position]
-    # For each digit, check if the assignment to the current character is valid
-    for digit in range(10):
-        if isValid(c, digit, ans):
-            # Update the answer dictionary
-            ans[c] = digit
-            # Recursively call the function with updated value
-            if solve(integer - digit * 10 ** position, position + 1):
-                # If a valid assignment has been found for each character, return True
-                return True
-            # If no valid assignment is found for some character, reset the current character's value and continue
-            ans[c] = 0
+    # Try to assign a digit to the next character
+    for c in problem:
+        # Proceed only if the character is not already assigned (unique assignment)
+        if c not in assignment:
+            # Try each digit from 0 to 9 that is not already assigned
+            for d in range(10):
+                # Assigning 0 to the first character of a string is not allowed
+                if d == 0 and (c == str1[0] or c == str2[0] or c == str3[0]):
+                    continue
+                if d not in assignment.values():
+                    assignment[c] = d
+                    # Recursively solve the problem with the new assignment
+                    result = solve(problem, assignment)
+                    # If the problem is solved, return the assignment
+                    if result:
+                        return result
+                    # Else, remove the assignment and try the next digit
+                    del assignment[c]
+    # If no solution is found
+    return None
 
-    return False
+str1 = list(input("String 1: "))
+str2 = list(input("String 2: "))
+str3 = list(input("Sum: "))
 
-
-char_count = 0
-str1, str2, str3 = [char for char in input("String 1: ")], [char for char in input("String 2: ")], [char for char in input("Sum: ")]
-
-# List of all characters used
+# List of all characters used in the problem
 chars = list(set(str1 + str2 + str3))
-char_count = len(chars)
-print(char_count)
 
-# Assign a digit to each character
-ans = {}
+# Solve the problem 
+start_time = time.time()
+assignment = solve(chars) or "No solution"
+end_time = time.time()
 
-if solve(int(str3), 0):
-    print(ans)
-else:
-    print("No solution")
+# Output
+for c in chars:
+    print(f"{c}: {assignment[c]}", end=" ")
+print()
+print(f"{end_time - start_time}s")
