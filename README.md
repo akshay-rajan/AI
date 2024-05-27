@@ -179,3 +179,21 @@ A node is a data structure that keeps track of
        return current_state
    ```
 
+## Knowledge Representation
+
+| Aspect                    | Propositional Logic                      | Predicate Logic                          |
+|---------------------------|------------------------------------------|------------------------------------------|
+| **Basic Unit**            | Propositions (statements that are true or false) | Predicates applied to variables (statements about objects) |
+| **Variables**             | None                                     | Yes (used to represent objects in the domain) |
+| **Quantifiers**           | None                                     | Yes (universal ∀ and existential ∃ quantifiers) |
+| **Expressiveness**        | Limited to simple statements and their combinations | More expressive, can represent relationships and properties of objects |
+| **Syntax**                | Simple, involves propositions and logical connectives `(¬, ∧, ∨, →, ↔)` | Complex, includes predicates, variables, functions, constants, logical connectives, and quantifiers |
+| **Example**               | p ⇒ q  (If p then q)      | ∀ x (P(x) ⇒ Q(x)) (For all x, if P(x) then Q(x)) |
+| **Interpretation**        | Truth values (true or false) assigned to propositions | Interpretation of the domain, assignment of values to variables, predicates, and functions |
+| **Domain of Discourse**   | Not applicable                           | Yes, a set of objects that the variables can refer to |
+| **Atomic Statements**     | Propositional variables (e.g., p, q, r)  | Predicates with terms (e.g., P(x), Q(a, b)) |
+| **Complexity**            | Simpler due to the lack of variables and quantifiers | More complex due to the inclusion of variables, quantifiers, and the structure of predicates |
+| **Applications**          | Boolean algebra, digital circuits, simple logical reasoning | Mathematics, computer science (e.g., databases, AI), linguistics, formal verification |
+| **Logical Connectives**   | ¬ (not), ∧ (and), ∨ (or), → (implies), ↔ (if and only if) | Same as propositional logic, but applied to predicates |
+| **Inference Rules**       | Modus ponens, modus tollens, disjunctive syllogism, etc. | Includes all rules from propositional logic plus rules for quantifiers (e.g., universal instantiation, existential generalization) |
+
